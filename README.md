@@ -1,1 +1,1 @@
-# NVBench
+# NVBench: A Benchmark for Speech Synthesis with Non-Verbal Vocalizations
