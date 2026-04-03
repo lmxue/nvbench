@@ -1,0 +1,8 @@
+librosa
+numpy
+onnxruntime
+pandas
+requests
+scipy
+soundfile
+tqdm

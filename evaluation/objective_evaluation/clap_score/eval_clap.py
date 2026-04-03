@@ -16,8 +16,12 @@ from collections import Counter  # === resume 相关 ===
 import torch
 import torch.nn.functional as F
 from msclap import CLAP
-import utmosv2
 import multiprocessing as mp
+
+try:
+    import utmosv2
+except ImportError:
+    utmosv2 = None
 
 # ========================= 日志与计时 =========================
 
@@ -401,6 +405,8 @@ def main():
             processed_since_ckpt = 0
 
     if args.run_utmos:
+        if utmosv2 is None:
+            raise ImportError("utmosv2 is not installed. Install it with: pip install utmosv2")
         # 仅处理缺失者
         utmos_todo = [i for i in range(N) if utmos_vals[i] is None]
         log(f"🧪 UTMOS to compute: {len(utmos_todo)} / {N}")
