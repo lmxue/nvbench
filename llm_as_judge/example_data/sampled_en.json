@@ -1,0 +1,23 @@
+[
+  {
+    "id": "en_1",
+    "text": "Wait a second... of course. That explains everything.",
+    "text_with_mark": "Wait a second... <ah> of course. That explains everything.",
+    "caption_with_nvb": "A person's voice trails off in thought, interrupted by a short 'ah' of sudden realization, then becomes clear and confident.",
+    "non_verbal_events": ["ah"]
+  },
+  {
+    "id": "en_2",
+    "text": "I can't believe we actually pulled it off. This is amazing!",
+    "text_with_mark": "I can't believe we actually pulled it off. <laugh> This is amazing!",
+    "caption_with_nvb": "An excited voice expressing disbelief and joy, with a genuine laugh of delight after the pause.",
+    "non_verbal_events": ["laugh"]
+  },
+  {
+    "id": "en_3",
+    "text": "Hmm, let me think about this for a moment... yes, I think that's right.",
+    "text_with_mark": "<hmm> let me think about this for a moment... yes, I think that's right.",
+    "caption_with_nvb": "A thoughtful voice starting with a contemplative hum, then pausing before confidently confirming an answer.",
+    "non_verbal_events": ["hmm"]
+  }
+]

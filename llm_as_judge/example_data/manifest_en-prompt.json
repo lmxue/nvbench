@@ -1,0 +1,86 @@
+{
+  "summary": {
+    "test_id": "en-prompt",
+    "lang": "en",
+    "mode": "prompt",
+    "seed": 42,
+    "samples_per_tag": 3,
+    "systems": [
+      {
+        "key": "system_a",
+        "name": "System A",
+        "folder": "system_a_outputs"
+      },
+      {
+        "key": "system_b",
+        "name": "System B",
+        "folder": "system_b_outputs"
+      }
+    ]
+  },
+  "by_tag": {
+    "ah": {
+      "sample_ids": ["en_1"],
+      "systems": {
+        "system_a": {
+          "name": "System A",
+          "folder": "system_a_outputs",
+          "supported": true,
+          "paths": {
+            "en_1": "/path/to/your/audio/system_a/en_1.wav"
+          }
+        },
+        "system_b": {
+          "name": "System B",
+          "folder": "system_b_outputs",
+          "supported": true,
+          "paths": {
+            "en_1": "/path/to/your/audio/system_b/en_1.wav"
+          }
+        }
+      }
+    },
+    "laugh": {
+      "sample_ids": ["en_2"],
+      "systems": {
+        "system_a": {
+          "name": "System A",
+          "folder": "system_a_outputs",
+          "supported": true,
+          "paths": {
+            "en_2": "/path/to/your/audio/system_a/en_2.wav"
+          }
+        },
+        "system_b": {
+          "name": "System B",
+          "folder": "system_b_outputs",
+          "supported": true,
+          "paths": {
+            "en_2": "/path/to/your/audio/system_b/en_2.wav"
+          }
+        }
+      }
+    },
+    "hmm": {
+      "sample_ids": ["en_3"],
+      "systems": {
+        "system_a": {
+          "name": "System A",
+          "folder": "system_a_outputs",
+          "supported": true,
+          "paths": {
+            "en_3": "/path/to/your/audio/system_a/en_3.wav"
+          }
+        },
+        "system_b": {
+          "name": "System B",
+          "folder": "system_b_outputs",
+          "supported": true,
+          "paths": {
+            "en_3": "/path/to/your/audio/system_b/en_3.wav"
+          }
+        }
+      }
+    }
+  }
+}
