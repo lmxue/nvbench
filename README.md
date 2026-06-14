@@ -53,9 +53,38 @@ Nonverbal vocalizations (NVVs) such as laughing, sighing, and sobbing are essent
   </tbody>
 </table>
 
-## NVV Inventories of Representative Tag-Based TTS Systems and Datasets
+## Resources in This Repository
 
-NVV inventories of representative tag-based TTS systems and datasets, as well as two recent benchmarks. §: commercial TTS system. †: tags with higher intensity, loudness, or speed. Tags that do not correspond to non-verbal vocalizations (e.g., non-vocal sound-effect tags like `[clapping]` or purely stylistic tags like `[sarcastic]`) are excluded from systems.
+This repository hosts the **45-type bilingual NVV evaluation set** and the **evaluation toolkit** used in NVV-SuperBench.
+
+### Dataset (`dataset/`)
+
+The `dataset/` directory contains the curated 45-type bilingual NVV evaluation set described in the paper: 2,250 English (`nvbench_data_en.json`) and 2,250 Chinese (`nvbench_data_zh.json`) instances, with balanced per-type coverage (45 NVV types × 50 instances per language). Each item follows a unified schema:
+
+| Field | Description |
+|---|---|
+| `id` | Unique sample identifier |
+| `text` | Plain text without NVV markers |
+| `text_with_mark` | Text with the target NVV inserted as an inline `<tag>` marker (tag-based control) |
+| `caption_with_nvb` | Natural-language caption describing the speaker, style, and the NVV (prompt-based control) |
+| `non_verbal_events` | Ground-truth NVV type(s) for this sample |
+
+### Evaluation (`evaluation/`)
+
+The `evaluation/` directory provides the scripts used for the multi-axis evaluation protocol:
+
+- **`objective_evaluation/`** — automatic, scalable metrics
+  - `wer_cer/` — WER (English, Whisper-large-v3) / CER (Chinese, paraformer-zh) for intelligibility
+  - `dnsmos/` — DNSMOS P.835 (SIG / BAK / OVRL) for non-intrusive perceptual speech quality
+  - `clap_score/` — CLAP score for caption–speech semantic alignment (prompt-based systems)
+  - `nvv_precision_recall_f1_distance/` — Coverage, Precision / Recall / F1, and Normalized Tag Distance (NTD) for NVV controllability (tag-based systems)
+- **`llm_evaluation/`** — Gemini-based multi-rater LLM-as-a-judge scripts that mirror the human subjective listening protocol (Naturalness, Quality, NVV PE, Overall/NVV Instruction Following, NVV Accuracy, Overall Expression)
+
+Each subfolder includes its own `README.md` with setup and usage instructions.
+
+## NVV Inventories of Representative Tag-Based Speech Generation Systems and Datasets
+<!-- 
+NVV inventories of representative tag-based systems and datasets, as well as two recent benchmarks. §: commercial system. †: tags with higher intensity, loudness, or speed. Tags that do not correspond to non-verbal vocalizations (e.g., non-vocal sound-effect tags like `[clapping]` or purely stylistic tags like `[sarcastic]`) are excluded from systems.
 
 <table border="1" cellpadding="6" cellspacing="0">
   <thead>
@@ -168,12 +197,12 @@ NVV inventories of representative tag-based TTS systems and datasets, as well as
   <td align="center">EN, ZH</td>
 </tr>
   </tbody>
-</table>
+</table> -->
 
 
-![Word cloud of NVV tags across surveyed TTS systems and datasets](figs/nvv_word_cloud.png)
+![Word cloud of NVV tags across surveyed speech generation systems and datasets](figs/nvv_word_cloud.png)
 
-*Word cloud of NVV tags across surveyed TTS systems and datasets. Tag size reflects frequency of occurrence. Laughter-related vocalizations dominate current inventories, while physiological sounds (e.g., snore, hiccup) and subtle oral cues (e.g., lipsmack, gulp) remain underrepresented.*
+*Word cloud of NVV tags across surveyed speech generation systems and datasets. Tag size reflects frequency of occurrence. Laughter-related vocalizations dominate current inventories, while physiological sounds (e.g., snore, hiccup) and subtle oral cues (e.g., lipsmack, gulp) remain underrepresented.* For the detailed per-system and per-dataset supported tags, please refer to the paper.
 
 ## Citation
 
