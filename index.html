@@ -494,6 +494,43 @@
 
     /* ── Results ── */
     #results { background: var(--gray-50); }
+    .systems-overview {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2.25rem;
+    }
+    .systems-group {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius-lg);
+      padding: 1.1rem 1.25rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .systems-group h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.85rem;
+    }
+    .systems-chip-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .sys-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 100px;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gray-700);
+      transition: border-color .15s, background .15s;
+    }
+    .sys-chip:hover { border-color: var(--blue-light); background: var(--blue-pale); }
+    .sys-chip .sys-badge { margin-left: 0; }
     .results-tabs {
       display: flex;
       gap: 0.25rem;
@@ -544,35 +581,46 @@
       border-radius: 2px;
     }
     .result-subtitle:first-child { margin-top: 0; }
-    .results-table-wrap { overflow-x: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow); margin-bottom: 0.5rem; }
+    .results-table-wrap { overflow-x: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow); margin-bottom: 0.5rem; border: 1px solid var(--gray-200); }
     .results-table {
       width: 100%;
       border-collapse: collapse;
       background: var(--white);
       font-size: 0.83rem;
     }
-    .results-table thead tr { background: var(--navy); color: var(--white); }
+    .results-table thead tr { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color: var(--white); }
     .results-table thead th {
-      padding: 0.7rem 0.9rem;
+      padding: 0.75rem 0.9rem;
       text-align: center;
       font-weight: 600;
       font-size: 0.76rem;
       letter-spacing: 0.03em;
       white-space: nowrap;
     }
-    .results-table thead th:first-child { text-align: left; }
+    .results-table thead th:first-child { text-align: left; position: sticky; left: 0; background: var(--navy); z-index: 2; }
     .results-table tbody tr { border-bottom: 1px solid var(--gray-100); transition: background .15s; }
+    .results-table tbody tr:nth-child(even) { background: var(--gray-50); }
     .results-table tbody tr:last-child { border-bottom: none; }
     .results-table tbody tr:hover { background: var(--blue-pale); }
+    .results-table tbody tr:hover td:first-child { background: var(--blue-pale); }
     .results-table td {
       padding: 0.62rem 0.9rem;
       text-align: center;
       vertical-align: middle;
       font-size: 0.83rem;
     }
-    .results-table td:first-child { text-align: left; font-weight: 600; color: var(--gray-800); white-space: nowrap; }
-    .best { font-weight: 800; }
-    .second { text-decoration: underline; }
+    .results-table td:first-child {
+      text-align: left;
+      font-weight: 600;
+      color: var(--gray-800);
+      white-space: nowrap;
+      position: sticky;
+      left: 0;
+      background: inherit;
+      box-shadow: 1px 0 0 var(--gray-200);
+    }
+    .best { font-weight: 800; color: var(--navy); background: #dcfce7; border-radius: 5px; padding: 0.15rem 0.5rem; display: inline-block; }
+    .second { font-weight: 600; color: var(--gray-700); background: var(--gray-100); border-radius: 5px; padding: 0.15rem 0.5rem; display: inline-block; text-decoration: underline; }
     .lang-pill {
       font-size: 0.65rem;
       font-weight: 700;
@@ -677,7 +725,7 @@
 <!-- ── Hero / Abstract ────────────────────────────────────────────────────── -->
 <section id="abstract">
   <div class="hero-inner">
-    <span class="hero-badge">Interspeech 2026 &mdash; Anonymous Submission</span>
+    <span class="hero-badge">Interspeech 2026</span>
     <h1 class="hero-title">
       NVV-SuperBench: Beyond Words, Beyond Quality—Benchmarking Nonverbal Vocalizations in Speech Generation</span>
     </h1>
@@ -704,12 +752,17 @@
         <h3>Multi-Axis Evaluation Protocol</h3>
         <p>Disentangles general speech quality from NVV-specific controllability, placement accuracy, and salience across 15 TTS systems.</p>
       </div>
+      <div class="contribution-card">
+        <span class="icon">&#129302;</span>
+        <h3>15 Speech Generation Systems</h3>
+        <p>A comprehensive system study spanning 8 tag-based and 7 prompt-based systems&mdash;commercial (ElevenLabs, Gemini 2.5 Pro/Flash, GPT-4o mini TTS) and open-source (ChatTTS, CosyVoice 2, Orpheus TTS, Fish-Speech, Higgs-Audio, Bark, Dia, Qwen3-TTS, Parler-TTS, CapSpeech).</p>
+      </div>
     </div>
 
     <div class="hero-buttons">
-      <button class="btn btn-disabled" disabled>
-        &#128196; Paper <span class="coming-soon">Coming Soon</span>
-      </button>
+      <a class="btn btn-primary" href="https://arxiv.org/pdf/2604.16211" target="_blank" rel="noopener noreferrer">
+        &#128196; Paper
+      </a>
       <a class="btn btn-primary" href="https://github.com/lmxue/NVBench" target="_blank" rel="noopener noreferrer">
         &#128190; Dataset
       </a>
@@ -850,6 +903,34 @@
       Results across objective metrics, subjective listening tests, and LLM-based evaluation for 15 TTS systems.
     </p>
 
+    <div class="systems-overview">
+      <div class="systems-group">
+        <h4>Tag-based Systems (8)</h4>
+        <div class="systems-chip-list">
+          <span class="sys-chip">ChatTTS <span class="sys-badge badge-open">Open</span></span>
+          <span class="sys-chip">Higgs-Audio <span class="sys-badge badge-open">Open</span></span>
+          <span class="sys-chip">Bark <span class="sys-badge badge-open">Open</span></span>
+          <span class="sys-chip">Fish-Speech <span class="sys-badge badge-open">Open</span></span>
+          <span class="sys-chip">Orpheus TTS <span class="sys-badge badge-open">Open</span></span>
+          <span class="sys-chip">CosyVoice 2 <span class="sys-badge badge-open">Open</span></span>
+          <span class="sys-chip">Dia <span class="sys-badge badge-open">Open</span></span>
+          <span class="sys-chip">ElevenLabs <span class="sys-badge badge-commercial">Commercial</span></span>
+        </div>
+      </div>
+      <div class="systems-group">
+        <h4>Prompt-based Systems (7)</h4>
+        <div class="systems-chip-list">
+          <span class="sys-chip">Gemini 2.5 Pro <span class="sys-badge badge-commercial">Commercial</span></span>
+          <span class="sys-chip">Gemini 2.5 Flash <span class="sys-badge badge-commercial">Commercial</span></span>
+          <span class="sys-chip">GPT-4o mini TTS <span class="sys-badge badge-commercial">Commercial</span></span>
+          <span class="sys-chip">Qwen3-TTS <span class="sys-badge badge-open">Open</span></span>
+          <span class="sys-chip">CapSpeech <span class="sys-badge badge-open">Open</span></span>
+          <span class="sys-chip">Parler-TTS Mini <span class="sys-badge badge-open">Open</span></span>
+          <span class="sys-chip">Parler-TTS Large <span class="sys-badge badge-open">Open</span></span>
+        </div>
+      </div>
+    </div>
+
     <div class="results-tabs">
       <button class="results-tab active" data-panel="objective">Objective Results</button>
       <button class="results-tab" data-panel="subjective">Subjective Results</button>
@@ -869,9 +950,9 @@
           <thead><tr>
             <th>System</th>
             <th>WER&darr;</th>
-            <th>SIG&uarr;</th>
-            <th>BAK&uarr;</th>
-            <th>OVRL&uarr;</th>
+            <th>DNSMOS SIG&uarr;</th>
+            <th>DNSMOS BAK&uarr;</th>
+            <th>DNSMOS OVRL&uarr;</th>
             <th>CLAP Score&uarr;</th>
           </tr></thead>
           <tbody>
@@ -892,9 +973,9 @@
           <thead><tr>
             <th>System</th>
             <th>CER&darr;</th>
-            <th>SIG&uarr;</th>
-            <th>BAK&uarr;</th>
-            <th>OVRL&uarr;</th>
+            <th>DNSMOS SIG&uarr;</th>
+            <th>DNSMOS BAK&uarr;</th>
+            <th>DNSMOS OVRL&uarr;</th>
             <th>CLAP Score&uarr;</th>
           </tr></thead>
           <tbody>
@@ -912,9 +993,9 @@
           <thead><tr>
             <th>System</th>
             <th>WER&darr;</th>
-            <th>SIG&uarr;</th>
-            <th>BAK&uarr;</th>
-            <th>OVRL&uarr;</th>
+            <th>DNSMOS SIG&uarr;</th>
+            <th>DNSMOS BAK&uarr;</th>
+            <th>DNSMOS OVRL&uarr;</th>
             <th>Coverage&uarr;</th>
             <th>Precision&uarr;</th>
             <th>Recall&uarr;</th>
@@ -940,9 +1021,9 @@
           <thead><tr>
             <th>System</th>
             <th>CER&darr;</th>
-            <th>SIG&uarr;</th>
-            <th>BAK&uarr;</th>
-            <th>OVRL&uarr;</th>
+            <th>DNSMOS SIG&uarr;</th>
+            <th>DNSMOS BAK&uarr;</th>
+            <th>DNSMOS OVRL&uarr;</th>
             <th>Coverage&uarr;</th>
             <th>Precision&uarr;</th>
             <th>Recall&uarr;</th>
@@ -960,7 +1041,7 @@
           </tbody>
         </table>
       </div>
-      <p class="metric-note">SIG/BAK/OVRL: DNSMOS metrics (higher is better). NTD: Normalized Tag Distance (lower is better).</p>
+      <p class="metric-note">DNSMOS SIG/BAK/OVRL: DNSMOS P.835 metrics for speech signal quality, background noise intrusiveness, and overall quality (higher is better). NTD: Normalized Tag Distance (lower is better).</p>
     </div>
 
     <!-- ── Subjective Results ── -->
@@ -1222,11 +1303,11 @@ function showHeatmap(lang) {
     <p class="section-subtitle">If you use NVBench in your research, please cite:</p>
     <div class="bibtex-block" id="bibtex-block">
       <button class="copy-btn" onclick="copyBibtex()">Copy</button>
-      <pre id="bibtex-content">@inproceedings{nvbench2026,
-  <span class="key">title</span>     = {<span class="val">NVBench: A Benchmark for Speech Synthesis with Non-Verbal Vocalizations</span>},
-  <span class="key">author</span>    = {<span class="val">Anonymous</span>},
-  <span class="key">booktitle</span> = {<span class="val">Interspeech 2026</span>},
-  <span class="key">year</span>      = {<span class="val">2026</span>}
+      <pre id="bibtex-content">@article{xue2026nvbench,
+  <span class="key">title</span>   = {<span class="val">NVBench: A Benchmark for Speech Synthesis with Non-Verbal Vocalizations</span>},
+  <span class="key">author</span>  = {<span class="val">Xue, Liumeng and Bian, Weizhen and Pan, Jiahao and Wang, Wenxuan and Ren, Yilin and Kang, Boyi and Hu, Jingbin and Ma, Ziyang and Wang, Shuai and Qian, Xinyuan and others</span>},
+  <span class="key">journal</span> = {<span class="val">arXiv preprint arXiv:2604.16211</span>},
+  <span class="key">year</span>    = {<span class="val">2026</span>}
 }</pre>
     </div>
   </div>
@@ -1234,8 +1315,8 @@ function showHeatmap(lang) {
 
 <!-- ── Footer ──────────────────────────────────────────────────────────────── -->
 <footer>
-  <p>NVBench &mdash; Anonymous Submission to Interspeech 2026</p>
-  <p style="margin-top:0.4rem;">This page is for anonymous peer review only.</p>
+  <p>NVBench &mdash; Accepted to Interspeech 2026</p>
+  <p style="margin-top:0.4rem;">Xue, Bian, Pan, Wang, Ren, Kang, Hu, Ma, Wang, Qian, et al. &mdash; <a href="https://arxiv.org/pdf/2604.16211" target="_blank" rel="noopener noreferrer">arXiv:2604.16211</a></p>
 </footer>
 
 <!-- ── JavaScript ──────────────────────────────────────────────────────────── -->
@@ -1482,11 +1563,11 @@ function showHeatmap(lang) {
 
   // ── Copy bibtex ────────────────────────────────────────────────────────────
   window.copyBibtex = function () {
-    const raw = `@inproceedings{nvbench2026,
-  title     = {NVBench: A Benchmark for Speech Synthesis with Non-Verbal Vocalizations},
-  author    = {Anonymous},
-  booktitle = {Interspeech 2026},
-  year      = {2026}
+    const raw = `@article{xue2026nvbench,
+  title   = {NVBench: A Benchmark for Speech Synthesis with Non-Verbal Vocalizations},
+  author  = {Xue, Liumeng and Bian, Weizhen and Pan, Jiahao and Wang, Wenxuan and Ren, Yilin and Kang, Boyi and Hu, Jingbin and Ma, Ziyang and Wang, Shuai and Qian, Xinyuan and others},
+  journal = {arXiv preprint arXiv:2604.16211},
+  year    = {2026}
 }`;
     navigator.clipboard.writeText(raw).then(() => {
       const btn = document.querySelector(".copy-btn");
