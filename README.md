@@ -1,4 +1,4 @@
-# NVBench: A Benchmark for Speech Synthesis with Non-Verbal Vocalizations
+# NVV-SuperBench: Beyond Words, Beyond Quality—Benchmarking Nonverbal Vocalizations in Speech Generation
 
 [![Paper](https://img.shields.io/badge/Paper-arXiv%3A2604.16211-b31b1b.svg)](https://arxiv.org/pdf/2604.16211)
 [![Project](https://img.shields.io/badge/Project-Page-2ea44f.svg)](https://lmxue.github.io/NVBench/)
