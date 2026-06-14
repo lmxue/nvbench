@@ -209,8 +209,8 @@ NVV inventories of representative tag-based systems and datasets, as well as two
 
 ```bibtex
 @article{xue2026nvbench,
-  title={NVBench: A Benchmark for Speech Synthesis with Non-Verbal Vocalizations},
-  author={Xue, Liumeng and Bian, Weizhen and Pan, Jiahao and Wang, Wenxuan and Ren, Yilin and Kang, Boyi and Hu, Jingbin and Ma, Ziyang and Wang, Shuai and Qian, Xinyuan and others},
+  title={NVV-SuperBench: Beyond Words, Beyond Quality—Benchmarking Nonverbal Vocalizations in Speech Generation},
+  author={Xue, Liumeng and Bian, Weizhen and Pan, Jiahao and Wu, Wenxuan and Ren, Yilin and Kang, Boyi and Hu, Jingbin and Ma, Ziyang and Wang, Shuai and Qian, Xinyuan and others},
   journal={arXiv preprint arXiv:2604.16211},
   year={2026}
 }
